@@ -10,7 +10,7 @@ import java.util.List;
  * DPKJ
  * 12/06/20
  */
-public class Application
+public class MatchFinder
 {
   private static final List<User> users = new ArrayList<>();
 

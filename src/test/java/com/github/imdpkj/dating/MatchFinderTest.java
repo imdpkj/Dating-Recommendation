@@ -6,6 +6,8 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.File;
 import java.io.IOException;
@@ -23,12 +25,14 @@ import java.util.stream.Stream;
  * 12/06/20
  */
 
-public class ApplicationTest
+public class MatchFinderTest
 {
+  private static final Logger logger = LoggerFactory.getLogger(MatchFinderTest.class);
+
   //Path to list of users for testing
   private final static String USER_DATA = "src/test/resources/users.json";
 
-  private static Application application;
+  private static MatchFinder application;
 
   /**
    * @throws IOException Register users from json file
@@ -43,10 +47,10 @@ public class ApplicationTest
 
     try (Reader reader = Files.newBufferedReader(path, StandardCharsets.UTF_8)) {
       User[] users = gson.fromJson(reader, User[].class);
-      application = new Application();
-      Arrays.stream(users).forEach(user -> {
-        application.register(user);
-      });
+      application = new MatchFinder();
+      Arrays.stream(users).forEach(user -> application.register(user));
+
+      logger.info("Users added");
     }
   }
 
@@ -57,7 +61,21 @@ public class ApplicationTest
 
     List<User> matches = application.findMathFor(dummy, 2);
 
-    System.out.println(matches);
+    logger.info("Matches for " + dummy + " are " + matches);
+    assert matches.size() == 2;
   }
 
+
+  @Test
+  public void haveMatchedAge()
+  {
+    User dummy = new User(100L, "X", 21, Gender.MALE, Stream.of("Movies", "Cricket").collect(Collectors.toSet()));
+
+    List<User> matches = application.findMathFor(dummy, 1);
+
+    logger.info("Matches for " + dummy + " are " + matches);
+
+    assert matches.size() == 1;
+    assert matches.get(0).getName().equals("F");
+  }
 }
