@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "name": "A",
+    "gender": "FEMALE",
+    "age": 25,
+    "interests": ["Cricket"]
+  },
+  {
+    "id": 2,
+    "name": "B",
+    "gender": "MALE",
+    "age": 27,
+    "interests": ["Cricket", "Football", "Movies"]
+  },
+  {
+    "id": 3,
+    "name": "C",
+    "gender": "MALE",
+    "age": 26,
+    "interests": ["Movies", "Tennis", "Football", "Cricket"]
+  },
+  {
+    "id": 4,
+    "name": "D",
+    "gender": "FEMALE",
+    "age": 24,
+    "interests": ["Tennis", "Football", "Badminton"]
+  },
+  {
+    "id": 5,
+    "name": "E",
+    "gender": "FEMALE",
+    "age": 32,
+    "interests": ["Cricket", "Football", "Movies", "Badminton"]
+  },
+  {
+    "id": 6,
+    "name": "F",
+    "gender": "FEMALE",
+    "age": 21,
+    "interests": ["Movies"]
+  },
+  {
+    "id": 7,
+    "name": "G",
+    "gender": "MALE",
+    "age": 25,
+    "interests": ["Tennis", "Football"]
+  }
+]
